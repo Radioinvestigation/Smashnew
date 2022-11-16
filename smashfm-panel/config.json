@@ -1,0 +1,34 @@
+{
+    "database": {
+        "host": "162.250.125.234",
+        "uName": "keiransn_panel1",
+        "pWord": "ltr!XoCb.r8Y",
+        "dbName": "keiransn_panel1"
+    },
+    "azura": {
+        "id": 6,
+        "key": "a4e73811af14b72b:d367bf39c254a4108819f9651933d922",
+        "base": "https://a.rize.services"
+    },
+    "bot": {
+        "id": "938529089793445898",
+        "secret": "KcmQ1ghbPvHbELoWHCn-C7Lxi8rfSzsY",
+        "token": "OTM4NTI5MDg5NzkzNDQ1ODk4.YfrnVA.kIyCeErD3sVNtC3XyBStBC5tJTY"
+    },
+    "discord": {
+        "guild": "940752000822427658",
+        "log": "940752001707409449",
+        "dj": "940752000847605835",
+        "headdj": "940752000847605837",
+        "manager": "940752000860164168",
+        "admin": "940752000860164171",
+        "dev": "940752000860164169",
+        "owner": "940752000860164173"
+    },
+    "serverType": "IceCast 2 (128kbps)",
+    "serverIP": "a.rize.services",
+    "serverPort": "8025 (8026 for some clients)",
+    "callback": "http://localhost:25570/discord/callback",
+    "base": "http://localhost:25570",
+    "port": 25570
+}

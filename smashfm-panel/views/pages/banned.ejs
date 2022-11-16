@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash &raquo; Access Denied</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.imgur.com/gdBZHuF.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(64, 107, 145);
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            color: white;
+        }
+
+        img {
+            -webkit-user-drag: none !important;
+        }
+
+        .pt-16 {
+            padding-top: 16px;
+        }
+
+        .textCenter {
+            color: white;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .textShadow {
+            text-shadow: 0px 0px 2px #fff;
+        }
+
+        .logoType {
+            color: white;
+            font-size: 50px;
+            margin-top: 100px;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .errText {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+        }
+
+        .playerCont {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 400px;
+            width: 650px;
+            background-color: rgba(0, 0, 0, .2);
+            border-radius: 25px;
+        }
+
+        .recentCont {
+            position: relative;
+            height: 90%;
+            width: 200px;
+            margin: 20px;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .statsCont {
+            position: relative;
+            height: 40%;
+            width: 410px;
+            margin-top: -380px;
+            margin-left: 220px;
+            margin-right: 20px !important;
+            border-bottom-right-radius: 25px;
+            border-top-right-radius: 25px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .controlsCont {
+            position: relative;
+            height: 40%;
+            width: 250px;
+            margin-top: 30px;
+            margin-left: 310px;
+            margin-right: 20px !important;
+        }
+
+        .recentElement {
+            background-color: rgba(0, 0, 0, .3);
+            height: 50px;
+            box-shadow: 0px 0px 5px #000;
+            width: 85%;
+            margin-left: 15px;
+            margin-top: 25px;
+            border-radius: 20px;
+        }
+
+        .recentImg {
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 10px;
+        }
+
+        .recentSongName {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            margin-top: -35px;
+            margin-left: 45px;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .recentSongArtist {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            margin-top: -7px;
+            margin-left: 45px;
+            font-weight: 300;
+            font-size: 11px;
+        }
+
+        .statsImg {
+            height: 120px;
+            padding: 20px;
+            border-radius: 35px !important;
+        }
+
+        .statsText {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            line-height: .6;
+            position: absolute;
+            margin-left: 150px;
+            margin-top: -135px;
+        }
+
+        .statsTextSong {
+            font-weight: 400;
+            font-size: 24px;
+        }
+
+        .statsTextArtist {
+            font-weight: 300;
+            font-size: 20px;
+        }
+
+        .statsDj {
+            font-weight: 200;
+            font-size: 16px;
+        }
+
+        .button {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 65px !important;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            text-shadow: 0px 0px 5px #000;
+            transition-duration: .5s;
+            transition-delay: 0;
+        }
+
+        @media only screen and (max-width: 650px) {
+            .recentCont {
+                display: none;
+            }
+
+            .statsCont {
+                position: absolute;
+                height: 400px;
+                border-radius: 50px;
+                width: 300px;
+                margin: unset !important;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .statsText {
+                margin-top: -10px;
+                margin-left: unset !important;
+                width: 100%;
+                text-align: center;
+                line-height: 1;
+
+            }
+
+            .playerCont {
+                background-color: unset;
+            }
+
+            .statsImg {
+                height: 150px;
+                margin-left: 50px;
+                margin-top: 50px;
+            }
+
+            .controlsCont {
+                position: absolute;
+                margin-left: 85px;
+                top: 50%;
+                margin-top: 150px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #volDown {
+                display: none;
+            }
+
+            #volUp {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="logoType textShadow">Triple</h1>
+    <h3 class="errText">Banned</h3>
+    <p class="errText">You have been banned from Smash for:</p>
+    <p class="errText"><%- info.banReason %></p>
+    <p class="errText">Ban ID: <%- info.banId %></p>
+</body>
+
+</html>

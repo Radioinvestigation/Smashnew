@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Smash &raquo; Timetable</title>
+  <link rel="icon" href="https://i.imgur.com/gdBZHuF.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+
+</head>
+
+<body>
+  <%- include('../../partials/sidebar.ejs') %>
+    <%- include('../../partials/topnav.ejs') %>
+    <div class="header bg-primary pb-6">
+      <div id="userInfo" style="display: none;">
+        <span id="discord"><%- user.id %></span> 
+        <span id="username"><%- user.username %></span>
+        <span id="avatar">https://cdn.booked_by_idapp.com/<%- user.id %>/<%- user.avatar %>.png</span>
+      </div>
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row">
+            <div class="col-lg-8 mb-4">
+              <div class="dayButtons">
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="MondayButt" onclick="switchDay(event, 'Monday')">Monday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="TuesdayButt" onclick="switchDay(event, 'Tuesday')">Tuesday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="WednesdayButt" onclick="switchDay(event, 'Wednesday')">Wednesday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="ThursdayButt" onclick="switchDay(event, 'Thursday')">Thursday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="FridayButt" onclick="switchDay(event, 'Friday')">Friday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="SaturdayButt" onclick="switchDay(event, 'Saturday')">Saturday</button>
+                <button class="mb-2 btn btn-sm btn-primary mr-1" id="SundayButt" onclick="switchDay(event, 'Sunday')">Sunday</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 mb-4 timetableCol">
+              <div id="Monday" class="timetableDay timetable timetableBlocksGrid">
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[0].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[0].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button href="/api/timetable/book/<%- data[0].id %>" type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[0].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+    
+                 <% if (data[1].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[1].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[1].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[2].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[2].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[2].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[3].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[3].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[3].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[4].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[4].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[4].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[5].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[5].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[5].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[6].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[6].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[6].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[7].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[7].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[7].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[8].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[8].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[8].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[9].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[9].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[9].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[10].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[10].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[10].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[11].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[11].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[11].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[12].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[12].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[12].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[13].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[13].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[13].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[14].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[14].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[14].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[15].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[15].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[15].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[16].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[16].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[16].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[17].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[17].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[17].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[18].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[18].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[18].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[19].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[19].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[19].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[20].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[20].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[20].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[21].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[21].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[21].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[22].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[22].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[22].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[23].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[23].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[23].booked_by %></button>
+                  <% } %>
+               </div>
+    
+              </div>
+    
+              <div id="Tuesday" class="timetableDay timetable timetableBlocksGrid">
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[24].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[24].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[24].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+                 <% if (data[25].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[25].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[25].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[26].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[26].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[26].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[27].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[27].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[27].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[28].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[28].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[28].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[29].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[29].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[29].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[30].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[30].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[30].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[31].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[31].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[31].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[32].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[32].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[32].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[33].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[33].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[33].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[34].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[34].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[34].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[35].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[35].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[35].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[36].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[36].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[36].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[37].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[37].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[37].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[38].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[38].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[38].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[39].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[39].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[39].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[40].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[40].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[40].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[41].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[41].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[41].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[42].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[42].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[42].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[43].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[43].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[43].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[44].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[44].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[44].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[45].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[45].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[45].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[46].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[46].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[46].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[47].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[47].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[47].booked_by %></button>
+                  <% } %>
+               </div>
+    
+              </div>
+    
+               <div id="Wednesday" class="timetableDay timetable timetableBlocksGrid">
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[48].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[48].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[48].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+                 <% if (data[49].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[49].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[49].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[50].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[50].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[50].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[51].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[51].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[51].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[52].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[52].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[52].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[53].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[53].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[53].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[54].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[54].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[54].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[55].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[55].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[55].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[56].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[56].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[56].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[57].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[57].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[57].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[58].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[58].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[58].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[59].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[59].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[59].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[60].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[60].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[60].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[61].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[61].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[61].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[62].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[62].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[62].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[63].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[63].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[63].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[64].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[64].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[64].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[65].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[65].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[65].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[66].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[66].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[66].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[67].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[67].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[67].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[68].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[68].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[68].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[69].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[69].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[69].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[70].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[70].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[70].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[71].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[71].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[71].booked_by %></button>
+                  <% } %>
+               </div>
+    
+              </div>
+    
+                <div id="Thursday" class="timetableDay timetable timetableBlocksGrid">
+    
+               <!--  -->
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[72].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[72].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[72].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+                 <% if (data[73].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[73].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[73].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[74].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[74].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[74].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[75].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[75].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[75].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[76].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[76].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[76].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[77].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[77].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[77].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[78].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[78].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[78].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[79].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[79].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[79].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[80].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[80].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[80].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[81].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[81].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[81].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[82].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[82].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[82].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[83].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[83].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[83].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[84].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[84].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[84].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[85].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[85].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[85].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[86].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[86].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[86].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[87].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[87].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[87].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[88].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[88].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[88].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[89].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[89].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[89].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[90].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[90].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[90].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[91].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[91].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[91].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[92].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[92].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[92].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[93].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[93].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[93].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[94].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[94].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[94].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[95].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[95].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[95].booked_by %></button>
+                  <% } %>
+               </div>
+    
+              </div>
+    
+               <div id="Friday" class="timetableDay timetable timetableBlocksGrid">
+    
+               <!--  -->
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[96].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[96].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[96].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+                 <% if (data[97].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[97].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[97].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[98].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[98].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[98].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[99].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[99].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[99].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[100].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[100].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[100].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[101].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[101].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[101].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[102].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[102].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[102].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[103].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[103].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[103].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[104].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[104].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[104].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[105].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[105].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[105].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[106].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[106].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[106].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[107].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[107].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[107].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[108].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[108].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[108].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[109].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[109].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[109].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[110].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[110].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[110].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[111].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[111].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[111].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[112].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[112].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[112].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[113].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[113].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[113].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[114].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[114].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[114].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[115].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[115].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[115].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[116].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[116].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[116].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[117].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[117].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[117].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[118].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[118].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[118].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[119].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[119].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[119].booked_by %></button>
+                  <% } %>
+               </div>
+    
+              </div>
+    
+              <div id="Saturday" class="timetableDay timetable timetableBlocksGrid">
+    
+               <!--  -->
+                <div class="timetableBlock">
+                  <p class="timetableTime">00:00-01:00</p>
+                  <% if (data[120].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[120].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[120].booked_by %></button>
+                  <% } %>
+                 </div>
+    
+               <div class="timetableBlock">
+    
+                 <p class="timetableTime">01:00-02:00</p>
+                 <% if (data[121].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[121].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[121].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">02:00-03:00</p>
+                 <% if (data[122].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[122].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[122].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">03:00-04:00</p>
+                 <% if (data[123].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[123].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[123].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">04:00-05:00</p>
+                 <% if (data[124].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[124].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[124].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">05:00-06:00</p>
+                 <% if (data[125].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[125].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[125].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">06:00-07:00</p>
+                 <% if (data[126].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[126].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[126].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">07:00-08:00</p>
+                 <% if (data[127].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[127].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[127].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">08:00-09:00</p>
+                 <% if (data[128].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[128].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[128].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">09:00-10:00</p>
+                 <% if (data[129].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[129].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[129].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">10:00-11:00</p>
+                 <% if (data[130].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[130].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[130].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">11:00-12:00</p>
+                 <% if (data[131].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[131].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[131].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">12:00-13:00</p>
+                 <% if (data[132].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[132].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[132].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">13:00-14:00</p>
+                 <% if (data[133].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[133].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[133].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">14:00-15:00</p>
+                 <% if (data[134].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[134].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[134].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">15:00-16:00</p>
+                 <% if (data[135].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[135].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[135].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">16:00-17:00</p>
+                 <% if (data[136].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[136].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[136].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">17:00-18:00</p>
+                 <% if (data[137].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[137].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[137].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">18:00-19:00</p>
+                 <% if (data[138].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[138].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[138].booked_by %></button>
+                  <% } %>
+               </div>
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">19:00-20:00</p>
+                 <% if (data[139].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[139].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[139].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">20:00-21:00</p>
+                 <% if (data[140].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[140].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[140].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">21:00-22:00</p>
+                 <% if (data[141].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[141].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[141].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">22:00-23:00</p>
+                 <% if (data[142].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[142].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[142].booked_by %></button>
+                  <% } %>
+               </div>
+    
+    
+               <div class="timetableBlock">
+                 <p class="timetableTime">23:00-00:00</p>
+                 <% if (data[143].booked_by_id === user.id){ %>
+                    <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[143].booked_by %></button>
+                    <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                  <% } else { %>
+                    <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[143].booked_by %></button>
+                  <% } %>
+               </div>
+            </div>
+               <div id="Sunday" class="timetableDay timetable timetableBlocksGrid">
+    
+                <!--  -->
+                 <div class="timetableBlock">
+                   <p class="timetableTime">00:00-01:00</p>
+                   <% if (data[144].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[144].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[144].booked_by %></button>
+                   <% } %>
+                  </div>
+    
+                <div class="timetableBlock">
+                 
+                  <p class="timetableTime">01:00-02:00</p>
+                  <% if (data[145].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[145].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[145].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">02:00-03:00</p>
+                  <% if (data[146].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[146].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[146].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">03:00-04:00</p>
+                  <% if (data[147].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[147].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[147].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">04:00-05:00</p>
+                  <% if (data[148].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[148].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[148].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                <div class="timetableBlock">
+                  <p class="timetableTime">05:00-06:00</p>
+                  <% if (data[149].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[149].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[147].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">06:00-07:00</p>
+                  <% if (data[150].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[150].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[150].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">07:00-08:00</p>
+                  <% if (data[151].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[151].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[151].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">08:00-09:00</p>
+                  <% if (data[152].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[152].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[152].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">09:00-10:00</p>
+                  <% if (data[153].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[153].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[153].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">10:00-11:00</p>
+                  <% if (data[154].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[154].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[154].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">11:00-12:00</p>
+                  <% if (data[155].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[155].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[155].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                <div class="timetableBlock">
+                  <p class="timetableTime">12:00-13:00</p>
+                  <% if (data[156].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[156].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[156].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">13:00-14:00</p>
+                  <% if (data[157].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[157].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[157].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">14:00-15:00</p>
+                  <% if (data[158].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[158].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[158].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">15:00-16:00</p>
+                  <% if (data[159].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[159].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[159].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">16:00-17:00</p>
+                  <% if (data[160].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[160].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[160].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">17:00-18:00</p>
+                  <% if (data[161].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[161].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[161].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">18:00-19:00</p>
+                  <% if (data[162].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[162].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[162].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                <div class="timetableBlock">
+                  <p class="timetableTime">19:00-20:00</p>
+                  <% if (data[163].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[163].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[163].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">20:00-21:00</p>
+                  <% if (data[164].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[164].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[164].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">21:00-22:00</p>
+                  <% if (data[165].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[165].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[165].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">22:00-23:00</p>
+                  <% if (data[166].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[166].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[166].booked_by %></button>
+                   <% } %>
+                </div>
+    
+                
+                <div class="timetableBlock">
+                  <p class="timetableTime">23:00-00:00</p>
+                  <% if (data[167].booked_by_id === user.id){ %>
+                     <button type="button" id="timeableBookButt" style="width: 80%;" class="timetableButton timetableText"><%- data[167].booked_by %></button>
+                     <span id="timetableunBook" class="timetableunBook"><i class="fas fa-times-circle"></i></span>
+                   <% } else { %>
+                     <button type="button" id="timeableBookButt" class="timetableButton timetableText"><%- data[167].booked_by %></button>
+                   <% } %>
+                </div>
+    
+               </div>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha512-hcPg/5yQzb6Ocz2NHy+XdRfmET1kTOtZc1l6Yt2TyriHW6WpK80hoLfaKG5wI7SqLt/x6IiV9kRoInYCA/BEWw==" crossorigin="anonymous"></script>
+  <script src="assets/js/timetable.js"></script>
+  <script src="assets/js/argon.js?v=1.2.0"></script>
+</body>
+</html>

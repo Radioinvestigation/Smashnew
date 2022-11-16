@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="The official Smash radio panel!">
+  <meta name="author" content="Rize Services">
+<title>Smash &raquo; Reset Timetable</title>
+<link rel="icon" href="https://i.imgur.com/gdBZHuF.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+<link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+<link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+<link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+</head>
+
+<body>
+<%- include('../../partials/sidebar.ejs') %>
+  <%- include('../../partials/topnav.ejs') %>
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="requestHeader">
+          <h1>Reset Timetable</h1>
+      </div>
+          <div class="center">
+            <div class="forms-sample" id='newEncoder'>
+              <button id="submit" onClick="submitForm()" class="shorten white">Reset</button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/argon.js?v=1.2.0"></script>
+<script>
+  function submitForm(){
+    $.ajax({
+      url: `/api/timetable/reset`,
+      method: "POST",
+      success: function(res){
+        if(res.error === true) {
+          $("#submit").text("Something went wrong!")
+        } else {
+          $("#submit").text("Timetable reset")
+        }
+      },
+      error: function(err){
+        $('#submit').text(err.status + " - " + err.statusText)
+      }
+    })
+  }
+</script>
+</body>
+</html>

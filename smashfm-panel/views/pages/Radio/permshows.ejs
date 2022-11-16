@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="The offical Smash Staff Panel!">
+  <meta name="author" content="Rize Services">
+  <title>Smash &raquo; Perm Shows</title>
+  <link rel="icon" href="https://i.imgur.com/gdBZHuF.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
+</head>
+
+<body>
+  <%- include('../../partials/sidebar.ejs') %>
+    <%- include('../../partials/topnav.ejs') %>
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+            <div class="requestHeader">
+                <h1>Perm Shows:</h1>
+                <p>If you would like to book a Perm Show please contact Dan.</p>
+                <p>Perm Shows are extreamly in development. Your show will be automatically booked into the panel weekly and you use your personal encoder for your show.</p>
+            </div>
+            <div class="requestBody">
+                <div class="card bg-default shadow">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-dark table-flush">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col" class="sort" data-sort="name">Show Name</th>
+                            <th scope="col" class="sort" data-sort="title">Show Description</th>
+                            <th scope="col" class="sort" data-sort="Artist">Show by</th>
+                            <th scope="col">Date and time</th>
+                            <th scope="col">Active?</th>
+                          </tr>
+                        </thead>
+            <tbody class="list">
+                            
+                <tr>
+                    <th scope="row">
+                        Test Show
+                    </th>
+                    <td class="title">
+                        Test Desc
+                    </td>
+                    <td>
+                        Dan
+                    </td>
+                    <td>
+                        Every Monday at 4pm - 5pm
+                    </td>
+                    <td>
+                        <i class="fas fa-check-circle"></i>
+                    </td>
+                </tr>
+            
+        </tbody>
+
+            </table>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/argon.js?v=1.2.0"></script>
+</body>
+</html>

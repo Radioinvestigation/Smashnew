@@ -1,0 +1,26 @@
+{
+  "name": "inspo-panel",
+  "description": "This is the official smash Radio Panel",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "pm2 start app.js --name 'inspo-panel'"
+  },
+  "author": "BobbyDTECH, Dann Systems LTD & veth1.cc",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "discord.js": "^12.5.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4",
+    "socket.io": "^4.0.1"
+  }
+}
