@@ -1,0 +1,9 @@
+{
+    "token":"Your Bot Token",
+    "guildId":"Your Server ID",
+    "clientId": "Your Bot ID",
+
+    "moderator_roles": [
+        "Your Mod Role ID"
+    ]
+}

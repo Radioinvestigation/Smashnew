@@ -1,0 +1,27 @@
+const {
+    SlashCommandBuilder
+} = require('@discordjs/builders');
+const {
+    MessageEmbed,
+    InteractionCollector,
+    MessageActionRow,
+    MessageButton
+} = require('discord.js');
+const ErrorHandler = require("discord-error-handler");
+const db = require('../config.json')
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('test')
+        .setDescription(`Is the bot working?`),
+    async execute(interaction) {       
+        try {
+            // ur code here
+        }catch(err) {
+            return interaction.reply({
+                content: `your reply`,
+                ephemeral: true
+              });
+        }
+    },
+};

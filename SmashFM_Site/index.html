@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmashFM &bull; Splash</title>
+    <link href="assets/core.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://pro.fontawesome.com/releases/v5.10.2/css/all.css" rel="stylesheet">
+</head>
+<body>
+    <audio id="stream" src="https://tempserver.itssmash.net/radio/8000/radio.mp3"></audio>
+    <div class="title">
+        <span class="logo">
+            SmashFM
+        </span>
+    </div>
+    <div class="player">
+        <div class="player-control">
+            <i class="fas fa-play" id="play-button"></i>
+        </div>
+        <div class="player-art">
+            <img src="https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96" id="album-art">
+        </div>
+        <div class="controls">
+            <div class="slider-container">
+              <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
+            </div>
+          </div>
+        <div class="left-boxes">
+            <div class="left-box">
+                <i class="fas fa-compact-disc"></i> <span id="song">Song Name</span>
+            </div>
+            <div class="left-box">
+                <i class="fas fa-microphone"></i> <span id="dj">DJ Name</span>
+            </div>
+            <div class="left-box">
+                <i class="fas fa-users"></i> <span id="listeners">Listeners</span>
+            </div>
+        </div>
+        <div class="right-boxes">
+            <div class="right-box">
+                <i class="fas fa-music"></i> <span id="artist">Artist</span>
+            </div>
+            <div class="right-box">
+                <i class="fab fa-discord"></i> Join our Discord
+            </div>
+            <div class="right-box">
+                <i class="fas fa-bullhorn"></i> Send a Request
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="top">
+            <p>Made with <i class="fas fa-heart"></i> by <a href="https://rize.services/discord">rize.services</a>.</p>
+        </div>
+        <div class="credits">
+            <p id="last">Last Played: AJR - Bummerland</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="assets/core.js"></script>
+</body>
+</html>
